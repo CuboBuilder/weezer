@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>you know what this is</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #189BDE; 
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            display: none;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .video-container.fade-in {
+            display: block;
+            opacity: 1;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .popup {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            text-align: center;
+            z-index: 1000;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .popup p {
+            margin: 0 0 15px 0;
+            color: #333333;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            background-color: #189BDE;
+            color: rgb(255, 255, 255);
+            border: none;
+            padding: 10px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #1170a2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="popup" id="popup">
+        <p>Warning! This website uses a lot of #189BDE <br> Are you sure you want to continue ?</p>
+        <button class="btn" onclick="acceptCookies()">Yes</button>
+    </div>
+
+    <div class="video-container" id="videoContainer">
+        <video id="weezerVideo" loop playsinline muted>
+            <source src="video.mp4" type="video/mp4">
+            something bad happend.
+        </video>
+    </div>
+
+    <script>
+        // wut are u doing her
+        function acceptCookies() {
+            const popup = document.getElementById('popup');
+            const container = document.getElementById('videoContainer');
+            const video = document.getElementById('weezerVideo');
+
+            popup.style.opacity = '0';
+            setTimeout(() => popup.style.display = 'none');
+            
+            container.style.display = 'block';
+            setTimeout(() => container.classList.add('fade-in'), 250);
+            
+            video.currentTime = 129; 
+            video.muted = false;
+            video.volume = 0.5;            
+
+            video.play()
+        };
+    </script>
+
+</body>
+</html>
+
